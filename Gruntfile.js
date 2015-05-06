@@ -62,7 +62,7 @@ module.exports = function(grunt) {
         concat: {
             dist: {
                 src: [
-                    'src/promise.js', 'src/fallback.js', 'src/punycode/punycode.js', 'src/core.js',  'src/*.js', 'src/renderers/*.js'
+                    'src/promise.js', 'src/fallback.js', 'src/punycode/punycode.js', 'src/core.js',  'src/*.js', 'src/renderers/*.js', 'src/canvg/*.js'
                 ],
                 nonull: true,
                 dest: 'dist/<%= pkg.name %>.js',

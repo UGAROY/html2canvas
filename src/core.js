@@ -79,10 +79,32 @@ function renderWindow(node, container, options, windowWidth, windowHeight) {
         } else {
             canvas = crop(renderer.canvas, {width:  options.width != null ? options.width : bounds.width, height: options.height != null ? options.height : bounds.height, top: bounds.top, left: bounds.left, x: clonedWindow.pageXOffset, y: clonedWindow.pageYOffset});
         }
-
+        
         cleanupContainer(container, options);
+        
+        // Custom Codes. 
+        // Before returning the canvas to the promise
+        // Implement our custom actions, for now, we only have the action to 
+        // Draw the SVGs
+        customActions(node, canvas);
         return canvas;
     });
+}
+
+function getOuterHTML(el)
+{   
+    var wrapper = '';
+    
+    if(el) {
+        var inner = el.innerHTML;
+        wrapper = '<' + el.tagName;
+        for( var i = 0; i < el.attributes.length; i++ ) {
+            wrapper += ' ' + el.attributes[i].nodeName + '="';
+            wrapper += el.attributes[i].nodeValue + '"';
+        }
+        wrapper += '>' + inner + '</' + el.tagName + '>';
+    }
+    return wrapper;
 }
 
 function cleanupContainer(container, options) {

@@ -743,6 +743,12 @@ function getBorderRadiusData(container) {
 }
 
 function renderableNode(node) {
+    // Custom Code Here: TODO: revisit
+    // In Chrome the tspan in svg is recognized as a text element. Which kind of mess up a lot of things 
+    // Here we simply skip all the svg rendering and handle it using the canvg 
+    if(node.ownerSVGElement) {
+      return false;
+    }
     return (node.nodeType === Node.TEXT_NODE || node.nodeType === Node.ELEMENT_NODE);
 }
 
