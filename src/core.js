@@ -91,22 +91,6 @@ function renderWindow(node, container, options, windowWidth, windowHeight) {
     });
 }
 
-function getOuterHTML(el)
-{   
-    var wrapper = '';
-    
-    if(el) {
-        var inner = el.innerHTML;
-        wrapper = '<' + el.tagName;
-        for( var i = 0; i < el.attributes.length; i++ ) {
-            wrapper += ' ' + el.attributes[i].nodeName + '="';
-            wrapper += el.attributes[i].nodeValue + '"';
-        }
-        wrapper += '>' + inner + '</' + el.tagName + '>';
-    }
-    return wrapper;
-}
-
 function cleanupContainer(container, options) {
     if (options.removeContainer) {
         container.parentNode.removeChild(container);
